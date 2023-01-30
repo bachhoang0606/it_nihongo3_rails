@@ -3,9 +3,3 @@
 <hr>
 <h1>Home page</h1>
 <hr>
-<% if user_signed_in? %>
-    <p>Wellcome <%= current_user.email %></p>
-    <br>
-    <%= link_to "サインアウト", destroy_user_session_path, method: :delete %><br>
-    <%= link_to "本一覧をみる", books_path %>
-<% end %>
