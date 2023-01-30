@@ -13,7 +13,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <% if user_signed_in? %>
-    <p>Wellcome <%= link_to current_user.email, users_show_path %></p>
+    <p>Wellcome <%= link_to current_user.name, users_show_path %></p>
     <br>
     <%= link_to "サインアウト", destroy_user_session_path, method: :delete %><br>
     <%= link_to "本一覧をみる", books_path %>
