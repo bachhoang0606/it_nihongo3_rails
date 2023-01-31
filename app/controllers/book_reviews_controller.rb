@@ -25,7 +25,8 @@ class BookReviewsController < ApplicationController
 
     respond_to do |format|
       if @book_review.save
-        format.html { redirect_to book_review_url(@book_review), notice: "Book review was successfully created." }
+        url = "/books/" + @book_review.book_id.to_s
+        format.html { redirect_to url, notice: "Book review was successfully created." }
         format.json { render :show, status: :created, location: @book_review }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -65,6 +66,6 @@ class BookReviewsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_review_params
-      params.require(:book_review).permit(:user_id, :book_id, :review)
+      params.require(:book_review).permit(:user_id, :book_id, :review).with_defaults(user_id: current_user.id)
     end
 end
